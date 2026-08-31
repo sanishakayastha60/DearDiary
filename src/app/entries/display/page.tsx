@@ -1,33 +1,30 @@
-import { getEntries, deleteEntry } from "@/app/actions";
-import Edit from "../edit/ModalEdit";
+import { getEntries, deleteEntry, updateEntry } from "@/app/actions";
 import Link from "next/link";
 
 export default async function Display() {
     const entries = await getEntries();
 
     return (
-        <div className="min-h-screen px-4 py-10">
-            <div className="mx-auto max-w-4xl">
-                {/* Header */}
-                <div className="mb-8 flex items-center justify-between">
-
+        <div className=" p-4 ml-[5vw]">
+            <div className="mx-auto max-w-xl w-full">
+                <div className="mb-4 flex">
                     <Link
                     href="/"
-                    className="mb-6 inline-flex items-center gap-2 text-sm font-medium text-slate-600 transition hover:text-slate-900"
+                    className="mb-4 inline-flex items-center gap-2 text-sm font-medium text-slate-600 transition hover:text-slate-900"
                 >
                     ← Back
                 </Link>
+                
                 </div>
-
-                {/* Entries */}
                 <div className="flex flex-col gap-4">
-                    <div>
-                        <h1 className="text-3xl font-bold tracking-tight text-slate-900">
-                            My Journal
-                        </h1>
+                    <h1 className="w-full text-2xl font-bold text-center">
+                         Your Memories 
+                     </h1>
+                    <div className="w-full flex justify-center">                        
+                        <input type="text" placeholder="Search" className="border border-black"/>
                     </div>
                     {entries.length === 0 ? (
-                        <div className="rounded-2xl bg-white p-10 text-center shadow-sm">
+                        <div>
                             <h2 className="text-xl font-semibold text-slate-800">
                                 No entries yet
                             </h2>
@@ -46,10 +43,9 @@ export default async function Display() {
                         entries.map((entry) => (
                             <div
                                 key={entry.id}
-                                className="group rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md sm:p-6"
+                                className="border border-black p-2 rounded-xl"
                             >
                                 <div className="flex flex-col gap-5 sm:flex-row sm:items-start sm:justify-between">
-                                    {/* Entry content */}
                                     <div className="min-w-0 flex-1">
                                         <h3 className="text-xl font-bold text-slate-900">
                                             {entry.title}
@@ -59,12 +55,13 @@ export default async function Display() {
                                             {entry.content}
                                         </p>
                                     </div>
-
-                                    {/* Actions */}
                                     <div className="flex shrink-0 items-center gap-2">
-                                        <div className="rounded-lg border border-blue-200 bg-blue-50 px-3 py-2 text-blue-600 transition hover:bg-blue-100">
-                                            <Edit entry={entry} />
-                                        </div>
+                                        <Link
+                                            href={`/entries/edit/${entry.id}`}
+                                            className="rounded-lg border border-blue-200 bg-blue-50 px-3 py-2 text-blue-600 transition hover:bg-blue-100"
+                                        >
+                                            Update
+                                        </Link>
 
                                         <form
                                             action={deleteEntry.bind(

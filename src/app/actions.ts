@@ -1,6 +1,7 @@
 "use server"
 import { prisma } from "@/lib/prisma";
 import { revalidatePath } from "next/cache"; 
+import { redirect } from "next/navigation";
 
 export async function createEntry(formData: FormData){
     await prisma.diaryEntry.create({
@@ -19,7 +20,10 @@ export async function getEntries(){
 }
 
 export async function getEntry(id:string){
-    return prisma.diaryEntry.findUnique({ where: { id } });
+    return prisma.diaryEntry.findUnique({ where: 
+        {
+             id : id, 
+        } });
 }
 
 export async function getEntryByDate(date: string){
@@ -48,6 +52,7 @@ export async function updateEntry(id:string, formData: FormData){
         },
     });
     revalidatePath("/");
+    redirect("/");
 }
 
 export async function deleteEntry(id:string){

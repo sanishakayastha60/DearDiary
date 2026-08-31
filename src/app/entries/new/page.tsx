@@ -9,7 +9,7 @@ export default function New() {
         year:"numeric",
     });
     return (
-        <div className="min-h-screen p-4 ml-[5vw]">
+        <div className="p-4 ml-[5vw]">
             <div className="mx-auto max-w-xl">
                 <Link
                     href="/"
