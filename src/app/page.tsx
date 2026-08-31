@@ -1,9 +1,9 @@
-import Entry from "./entries/Entry";
+import CalendarFrame from "./components/CalendarFrame";
 
 export default function Home(){
   return(
     <div>
-      <Entry/>
+      <CalendarFrame />
     </div>
   )
 }

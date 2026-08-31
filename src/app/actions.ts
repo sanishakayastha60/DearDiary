@@ -22,6 +22,23 @@ export async function getEntry(id:string){
     return prisma.diaryEntry.findUnique({ where: { id } });
 }
 
+export async function getEntryByDate(date: string){
+     const start = new Date(`${date}T00:00:00`);
+     const end = new Date(start);
+     end.setDate(end.getDate()+1)
+     return prisma.diaryEntry.findMany({
+        where: {
+            createdAt: {
+                gte: start,
+                lte: end,
+            },
+         },
+         orderBy: {
+            createdAt: "desc",
+         },
+     });
+}
+
 export async function updateEntry(id:string, formData: FormData){
     await prisma.diaryEntry.update({
         where:{ id },

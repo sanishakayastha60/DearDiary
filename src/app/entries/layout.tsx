@@ -1,4 +1,3 @@
-import Link from "next/link"
 export default function EntriesLayout({
     children,
 }:{
@@ -6,9 +5,6 @@ export default function EntriesLayout({
 }){
     return(
         <div>
-            <nav>
-                <Link href="/">Today</Link>
-            </nav>
             <main>{children}</main>
         </div>
     )
