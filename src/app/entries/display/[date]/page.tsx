@@ -24,8 +24,10 @@ export default async function HistoryDate({params,}:PageProps){
                     <div>
                     {entries.map((entry)=>(
                     <div key={entry.id}>
-                        {entry.title}
-                        {entry.content}
+                        <h2 className="text-center text-2xl font-bold mb-4">{entry.title}</h2>
+                        <p className="italic">
+                            {entry.content}
+                        </p>
                     </div>
                     ))}
                     </div>

@@ -1,4 +1,4 @@
-import { getEntries, deleteEntry, updateEntry } from "@/app/actions";
+import { getEntries, deleteEntry } from "@/app/actions";
 import Link from "next/link";
 
 export default async function Display() {
@@ -8,20 +8,12 @@ export default async function Display() {
         <div className=" p-4 ml-[5vw]">
             <div className="mx-auto max-w-xl w-full">
                 <div className="mb-4 flex">
-                    <Link
-                    href="/"
-                    className="mb-4 inline-flex items-center gap-2 text-sm font-medium text-slate-600 transition hover:text-slate-900"
-                >
-                    ← Back
-                </Link>
-                
                 </div>
                 <div className="flex flex-col gap-4">
                     <h1 className="w-full text-2xl font-bold text-center">
                          Your Memories 
                      </h1>
-                    <div className="w-full flex justify-center">                        
-                        <input type="text" placeholder="Search" className="border border-black"/>
+                    <div className="w-full flex justify-center"> 
                     </div>
                     {entries.length === 0 ? (
                         <div>

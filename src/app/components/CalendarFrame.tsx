@@ -23,7 +23,7 @@ export default function CalendarFrame(){
         const isToday = date.getDate() === today.getDate() && date.getMonth()===today.getMonth() && date.getFullYear() === today.getFullYear();
         if(isToday){
             const entry = await getEntryByDate(dateString);
-            if(!entry){
+            if(entry.length<1){
                 router.push("/entries/new");
             }else{
                 router.push(`entries/display/${dateString}`)
@@ -33,8 +33,8 @@ export default function CalendarFrame(){
         }
     }
     return(
-        <div className="w-full h-full flex justify-center items-center">
-            <Calendar mode="single" selected={date} onSelect={handleSetDate} disabled={{after: new Date()}}/>
+        <div className="w-full h-full min-w-0 min-h-0 flex justify-center">
+            <Calendar mode="single" selected={date} onSelect={handleSetDate} disabled={{after: new Date()}} className="w-full h-full max-w-[70%] max-h-[50%] lg:w-[50%] lg:h-[50%] bg-transparent"/>
         </div>
     )
 }

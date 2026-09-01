@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { Search } from "lucide-react";
 import { getEntryByDate } from "../actions";
 export default async function NavBar(){
     const today = new Date();
@@ -15,9 +14,7 @@ export default async function NavBar(){
                     "/entries/new"
                 }>Today</Link>
                 <Link href="/entries/display">History</Link>
-            </div>
-            <div>
-                <Link href="/entries/display"><Search /></Link>
+                <Link href="/entries/search">Search</Link>
             </div>
         </div>
     )
