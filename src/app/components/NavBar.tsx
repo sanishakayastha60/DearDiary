@@ -8,7 +8,7 @@ export default async function NavBar(){
     return(
         <div className="w-full px-[5vw] py-4 flex justify-between border border-b-[#78716c]">
             <div className="flex gap-4">
-                <Link href="/">Home</Link>
+                <Link href="/home">Home</Link>
                 <Link href={
                     todayEntered ? `entries/display/${dateString}`:
                     "/entries/new"

@@ -38,7 +38,7 @@ export default function SearchBar(){
     return(
         <div className="ml-[10vw] w-[75%] h-full p-2 rounded-xl flex flex-col gap-2">
             <h1 className="text-2xl font-bold uppercase mt-8">Revisit a memory . . .</h1>
-            <div className="mx-auto mt-6 flex w-full max-w-xl items-center rounded-2xl border border-gray-400 px-4 py-2 shadow-sm transition-all focus-within:border-gray-600 focus-within:shadow-md">
+            <div className="mt-6 flex w-full max-w-xl items-center rounded-2xl border border-gray-400 px-4 py-2 shadow-sm transition-all focus-within:border-gray-600 focus-within:shadow-md">
             <Search
                 width={20}
                 height={20}

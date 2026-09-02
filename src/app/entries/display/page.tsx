@@ -10,10 +10,10 @@ export default async function Display() {
                 <div className="mb-4 flex">
                 </div>
                 <div className="flex flex-col gap-4">
-                    <h1 className="w-full text-2xl font-bold text-center">
+                    <h2 className="w-full text-2xl font-bold uppercase">
                          Your Memories 
-                     </h1>
-                    <div className="w-full flex justify-center"> 
+                     </h2>
+                    <div className="w-full flex justify-center uppercase"> 
                     </div>
                     {entries.length === 0 ? (
                         <div>
@@ -35,15 +35,22 @@ export default async function Display() {
                         entries.map((entry) => (
                             <div
                                 key={entry.id}
-                                className="border border-black p-2 rounded-xl"
+                                className="p-2 rounded-xl"
                             >
                                 <div className="flex flex-col gap-5 sm:flex-row sm:items-start sm:justify-between">
                                     <div className="min-w-0 flex-1">
-                                        <h3 className="text-xl font-bold text-slate-900">
+                                        <h2 className="text-2xl font-bold">
+                                            {entry.createdAt.toLocaleDateString("en-US",{
+                                                month: "long",
+                                                day: "numeric",
+                                                year: "numeric"
+                                            })}
+                                        </h2>
+                                        <div className="font-bold text-slate-900">
                                             {entry.title}
-                                        </h3>
+                                        </div>
 
-                                        <p className="mt-2 whitespace-pre-wrap break-words leading-7 text-slate-600">
+                                        <p className="mt-2 whitespace-pre-wrap break-words leading-7 text-slate-600 line-clamp-2">
                                             {entry.content}
                                         </p>
                                     </div>
