@@ -1,6 +1,11 @@
 import Link from "next/link";
 import { getEntryByDate } from "../actions";
+import { auth } from "@/auth";
+import SignInButton from "./SignInButton";
+import SignOutButton from "./SignOutButton";
 export default async function NavBar(){
+    const session = await auth(); 
+
     const today = new Date();
     const dateString = today.toISOString().split('T')[0];
     const entries = await getEntryByDate(dateString);
@@ -15,6 +20,13 @@ export default async function NavBar(){
                 }>Today</Link>
                 <Link href="/entries/display">History</Link>
                 <Link href="/entries/search">Search</Link>
+            </div>
+            <div>
+                {session?.user ? (
+                    <SignOutButton />
+                ): (
+                    <SignInButton/>
+                )}
             </div>
         </div>
     )

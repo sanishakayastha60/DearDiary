@@ -33,7 +33,7 @@ export default function CalendarFrame(){
         }
     }
     return(
-        <div className="w-full h-full min-w-0 min-h-0 flex justify-center">
+        <div className="w-full h-full min-w-0 min-h-0 flex justify-center ml-[-5vw]">
             <Calendar mode="single" selected={date} onSelect={handleSetDate} disabled={{after: new Date()}} className="w-full h-full max-w-[70%] max-h-[50%] lg:w-[50%] lg:h-[50%] bg-transparent"/>
         </div>
     )

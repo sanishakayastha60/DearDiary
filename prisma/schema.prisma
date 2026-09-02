@@ -11,11 +11,21 @@ generator client {
 datasource db {
   provider = "postgresql"
 }
+model User {
+  id String @id @default(cuid())
+  email String @unique
+  name String?
+  image String?
+  diaryEntries DiaryEntry[]
+}
 
 model DiaryEntry {
   id String @id @default(cuid())
   title String
   content String?
+  userId String?
+  user User? @relation(fields: [userId], references:[id], onDelete: Cascade)
+  @@index([userId])
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
