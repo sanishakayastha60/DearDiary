@@ -4,7 +4,7 @@ import SignOutButton from "./components/SignOutButton";
 import { redirect } from "next/navigation";
 export default async function App(){
     const session = await auth();
-    if(session?.user){
+    if(session?.user?.id){
         redirect("/home")
     }
     return(
