@@ -14,7 +14,7 @@ import {
 } from "@/components/ui/alert-dialog"
 import { Button } from "@/components/ui/button"
 
-export default function AlertDialogDestructive({action,}:{
+export default function DeleteButton({action,}:{
     action: () =>void;
 }) {
   return (

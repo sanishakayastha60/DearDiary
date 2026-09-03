@@ -2,6 +2,7 @@ import { getEntries, deleteEntry } from "@/app/actions";
 import Link from "next/link";
 import DeleteButton from "../../../components/DeleteButton";
 import { Button } from "@/components/ui/button";
+import EntryCard from "@/app/components/EntryCard";
 export default async function Display() {
     const entries = await getEntries();
 
@@ -14,8 +15,6 @@ export default async function Display() {
                     <h2 className="w-full text-2xl font-bold uppercase">
                          Your Memories 
                      </h2>
-                    <div className="w-full flex justify-center uppercase"> 
-                    </div>
                     {entries.length === 0 ? (
                         <div>
                             <h2 className="text-xl font-semibold text-slate-800">
@@ -38,34 +37,7 @@ export default async function Display() {
                                 key={entry.id}
                                 className="p-2 rounded-xl"
                             >
-                                <div className="flex flex-col gap-5 sm:flex-row sm:items-start sm:justify-between">
-                                    <div className="min-w-0 flex-1">
-                                        <h2 className="text-2xl font-bold">
-                                            {entry.createdAt.toLocaleDateString("en-US",{
-                                                month: "long",
-                                                day: "numeric",
-                                                year: "numeric"
-                                            })}
-                                        </h2>
-                                        <div className="font-bold text-slate-900">
-                                            {entry.title}
-                                        </div>
-
-                                        <p className="mt-2 whitespace-pre-wrap break-words leading-7 text-slate-600 line-clamp-2">
-                                            {entry.content}
-                                        </p>
-                                    </div>
-                                    <div className="flex shrink-0 items-center gap-2">
-                                        <Link
-                                            href={`/entries/edit/${entry.id}`}
-                                        >
-                                           <Button variant="outline">Update</Button>
-                                        </Link>
-                                            <DeleteButton action={deleteEntry.bind(
-                                                null, entry.id,
-                                            )}/>
-                                    </div>
-                                </div>
+                                <EntryCard info={entry}/>
                             </div>
                         ))
                     )}
