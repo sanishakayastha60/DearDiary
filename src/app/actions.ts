@@ -19,7 +19,7 @@ async function requireCurrentUser(){
 
 export async function createEntry(formData: FormData){
     const user = await requireCurrentUser();
-    await prisma.diaryEntry.create({
+    const entry = await prisma.diaryEntry.create({
         data: {
             title: formData.get("title") as string,
             content: formData.get("content") as string,
@@ -27,6 +27,7 @@ export async function createEntry(formData: FormData){
         },
     });
     revalidatePath("/");
+    redirect(`/entries/display/${entry.createdAt.toISOString().split('T')[0]}`);
 }
 
 export async function getEntries(){

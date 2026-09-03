@@ -1,6 +1,7 @@
 import { getEntries, deleteEntry } from "@/app/actions";
 import Link from "next/link";
-
+import DeleteButton from "../../../components/DeleteButton";
+import { Button } from "@/components/ui/button";
 export default async function Display() {
     const entries = await getEntries();
 
@@ -25,7 +26,7 @@ export default async function Display() {
                             </p>
 
                             <Link
-                                href="/new"
+                                href="/entries/new"
                                 className="mt-5 inline-block rounded-lg bg-blue-600 px-5 py-2.5 font-medium text-white transition hover:bg-blue-700"
                             >
                                 Create Entry
@@ -57,29 +58,18 @@ export default async function Display() {
                                     <div className="flex shrink-0 items-center gap-2">
                                         <Link
                                             href={`/entries/edit/${entry.id}`}
-                                            className="rounded-lg border border-blue-200 bg-blue-50 px-3 py-2 text-blue-600 transition hover:bg-blue-100"
                                         >
-                                            Update
+                                           <Button variant="outline">Update</Button>
                                         </Link>
-
-                                        <form
-                                            action={deleteEntry.bind(
-                                                null,
-                                                entry.id
-                                            )}
-                                        >
-                                            <button
-                                                type="submit"
-                                                className="rounded-lg bg-red-50 px-3 py-2 font-medium text-red-600 transition hover:bg-red-100"
-                                            >
-                                                Delete
-                                            </button>
-                                        </form>
+                                            <DeleteButton action={deleteEntry.bind(
+                                                null, entry.id,
+                                            )}/>
                                     </div>
                                 </div>
                             </div>
                         ))
                     )}
+                    
                 </div>
             </div>
         </div>

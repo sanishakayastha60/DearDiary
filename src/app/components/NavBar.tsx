@@ -15,7 +15,7 @@ export default async function NavBar(){
             <div className="flex gap-4">
                 <Link href="/home">Home</Link>
                 <Link href={
-                    todayEntered ? `entries/display/${dateString}`:
+                    todayEntered ? `/entries/display/${dateString}`:
                     "/entries/new"
                 }>Today</Link>
                 <Link href="/entries/display">History</Link>
