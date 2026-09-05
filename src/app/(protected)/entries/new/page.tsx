@@ -1,5 +1,6 @@
 import { createEntry } from "@/app/actions"
 import Link from "next/link"
+import { Button } from "@/components/ui/button";
 
 export default function New() {
     const date = new Date();
@@ -11,16 +12,16 @@ export default function New() {
     return (
         <div className="p-4 ml-[5vw]">
             <div className="mx-auto max-w-xl">
-                <Link
+                {/* <Link
                     href="/"
                     className="mb-6 inline-flex items-center gap-2 text-sm font-medium text-slate-600 transition hover:text-slate-900"
                 >
-                    ← Back
-                </Link>
+                     Back
+                </Link> */}
 
                 <div>
                     <div>
-                        <h2 className="text-3xl text-center font-bold tracking-tight text-slate-900">
+                        <h2 className="text-3xl text-center font-bold tracking-tight text-slate-900 mb-3">
                             {dateString}
                         </h2>
                     </div>
@@ -29,9 +30,11 @@ export default function New() {
                         <div className="flex flex-col gap-2">
                             <input
                                 id="title"
+                                autoFocus
                                 type="text"
                                 name="title"
-                                placeholder="Give your day a title..."
+                                placeholder="Give your day a title . . ."
+                                className="outline-none text-xl font-bold text-foreground"
                                 required
                             />
                         </div>
@@ -41,16 +44,17 @@ export default function New() {
                                 name="content"
                                 placeholder="What happened today?"
                                 rows={8}
-                                className="italic"
+                                className="italic outline-none font-medium"
                             />
                         </div>
 
-                        <button
+                        <Button
                             type="submit"
-                            className="mt-2 rounded-lg bg-yellow-200 px-4 py-3 font-semibold text-white shadow-sm transition hover:bg-blue-700 hover:shadow-md active:scale-[0.98]"
+                            variant="default"
+                            className="absolute bottom-8 right-6 uppercase"                         
                         >
                             Save Entry
-                        </button>
+                        </Button>
                     </form>
                 </div>
             </div>

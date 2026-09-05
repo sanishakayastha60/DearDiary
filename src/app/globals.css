@@ -49,7 +49,7 @@
 }
 :root {
   --background: oklch(0.97 0.015 75);
-  --foreground: oklch(0.24 0.045 55);
+  --foreground: oklch(18.961% 0.03877 60.553);
   --card: oklch(0.985 0.01 75);
   --card-foreground: oklch(0.24 0.045 55);
   --popover: oklch(0.985 0.01 75);
@@ -70,7 +70,7 @@
   --chart-2: oklch(0.58 0.12 45);
   --chart-3: oklch(0.68 0.11 75);
   --chart-4: oklch(0.55 0.07 140);
-  --chart-5: oklch(0.40 0.05 60);
+  --chart-5: oklch(0.4 0.05 60);
   --radius: 0.625rem;
   --sidebar: oklch(0.95 0.018 70);
   --sidebar-foreground: oklch(0.24 0.045 55);
