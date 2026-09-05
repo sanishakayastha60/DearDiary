@@ -21,17 +21,17 @@ export default function EntryCard({ info }: { info: Entry }) {
     <Card className="w-full">
       <CardContent>
         <Collapsible>
-          <CollapsibleTrigger className="relative w-full">
-            <h2 className="absolute left-0 text-base font-bold">
-              {info.title}
-            </h2>
-            <br />
-            <p className="absolute left-0 my-2 italic">{dateString}</p>
-            <ChevronDown className="ml-auto group-data-panel-open/button:rotate-180" />
+          <CollapsibleTrigger className="group relative flex w-full items-center">
+            <div className="text-left">
+              <h2 className="text-base font-bold uppercase">{info.title}</h2>
+              <br />
+              <p>{dateString}</p>
+            </div>
+            <ChevronDown className="ml-auto shrink-0 transition-transform duration-200 group-data-[state=open]:rotate-180" />
           </CollapsibleTrigger>
           <CollapsibleContent className="flex flex-col items-start gap-2 my-2 pt-0 text-sm">
             <hr />
-            <div className="line-clamp-2">{info.content}</div>
+            <div className="line-clamp-2 italic">{info.content}</div>
             <div className="flex gap-2">
               <Link
                 href={`/entries/display/${dateString}`}
