@@ -3,31 +3,35 @@ import { getEntryByDate } from "../actions";
 import { auth } from "@/auth";
 import SignInButton from "./SignInButton";
 import SignOutButton from "./SignOutButton";
-export default async function NavBar(){
-    const session = await auth(); 
+export default async function NavBar() {
+  const session = await auth();
 
-    const today = new Date();
-    const dateString = today.toISOString().split('T')[0];
-    const entries = await getEntryByDate(dateString);
-    const todayEntered = entries.length > 0;
-    return(
-        <div className="w-full px-[5vw] py-4 flex justify-between border border-b-[#78716c]">
-            <div className="flex gap-4">
-                <Link href="/home">Home</Link>
-                <Link href={
-                    todayEntered ? `/entries/display/${dateString}`:
-                    "/entries/new"
-                }>Today</Link>
-                <Link href="/entries/display">History</Link>
-                <Link href="/entries/search">Search</Link>
-            </div>
-            <div>
-                {session?.user ? (
-                    <SignOutButton />
-                ): (
-                    <SignInButton/>
-                )}
-            </div>
-        </div>
-    )
+  const today = new Date();
+  const dateString = today.toISOString().split("T")[0];
+  const entries = await getEntryByDate(dateString);
+  const todayEntered = entries.length > 0;
+  return (
+    <div className="w-full px-[5vw] py-4 flex justify-between border border-b-[#78716c] font-handlee">
+      <div className="flex gap-4 items-center">
+        <Link href="/home" className="hover:underline">
+          Home
+        </Link>
+        <Link
+          href={
+            todayEntered ? `/entries/display/${dateString}` : "/entries/new"
+          }
+          className="hover:underline"
+        >
+          Today
+        </Link>
+        <Link href="/entries/display" className="hover:underline">
+          History
+        </Link>
+        <Link href="/entries/search" className="hover:underline">
+          Search
+        </Link>
+      </div>
+      <div>{session?.user ? <SignOutButton /> : <SignInButton />}</div>
+    </div>
+  );
 }

@@ -46,6 +46,9 @@
   --radius-2xl: calc(var(--radius) * 1.8);
   --radius-3xl: calc(var(--radius) * 2.2);
   --radius-4xl: calc(var(--radius) * 2.6);
+  --font-handlee: "Handlee", cursive;
+  --font-kalam: "Kalam", cursive;
+  --font-rubik-doodle-shadow: "Rubik Doodle Shadow", cursive;
 }
 :root {
   --background: oklch(0.97 0.015 75);

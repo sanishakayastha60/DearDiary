@@ -23,15 +23,19 @@ export default function EntryCard({ info }: { info: Entry }) {
         <Collapsible>
           <CollapsibleTrigger className="group relative flex w-full items-center">
             <div className="text-left">
-              <h2 className="text-base font-bold uppercase">{info.title}</h2>
+              <h2 className="text-base font-kalam font-bold uppercase">
+                {info.title}
+              </h2>
               <br />
-              <p>{dateString}</p>
+              <p className="font-handlee">{dateString}</p>
             </div>
             <ChevronDown className="ml-auto shrink-0 transition-transform duration-200 group-data-[state=open]:rotate-180" />
           </CollapsibleTrigger>
           <CollapsibleContent className="flex flex-col items-start gap-2 my-2 pt-0 text-sm">
             <hr />
-            <div className="line-clamp-2 italic">{info.content}</div>
+            <div className="line-clamp-2 font-kalam whitespace-pre-wrap break-words">
+              {info.content}
+            </div>
             <div className="flex gap-2">
               <Link
                 href={`/entries/display/${dateString}`}

@@ -1,5 +1,11 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import {
+  Geist,
+  Geist_Mono,
+  Kalam,
+  Handlee,
+  Rubik_Doodle_Shadow,
+} from "next/font/google";
 import "./globals.css";
 import { url } from "inspector";
 import NavBar from "./components/NavBar";
@@ -15,6 +21,24 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const kalam = Kalam({
+  variable: "--font-kalam",
+  weight: ["400", "700"],
+  subsets: ["latin"],
+});
+
+const handlee = Handlee({
+  variable: "--font-handlee",
+  weight: "400",
+  subsets: ["latin"],
+});
+
+const rubikDoodleShadow = Rubik_Doodle_Shadow({
+  variable: "--font-rubik-doodle-shadow",
+  weight: "400",
+  subsets: ["latin"],
+});
+
 export const metadata: Metadata = {
   title: "Dear Diary",
   description: "Keep your memoir alive",
@@ -24,13 +48,16 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} ${kalam.variable} ${handlee.variable} ${rubikDoodleShadow.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col" style={{
-        backgroundImage: "url('/bg_unsplash_scott.jpg')"
-      }}>
+      <body
+        className="min-h-full flex flex-col"
+        style={{
+          backgroundImage: "url('/bg_unsplash_scott.jpg')",
+        }}
+      >
         <Frame>
-          <NavBar/>
+          <NavBar />
           {children}
         </Frame>
       </body>

@@ -8,7 +8,9 @@ export default async function Display() {
       <div className="mx-auto max-w-xl w-full min-w-0">
         <div className="mb-4 flex"></div>
         <div className="flex flex-col gap-4">
-          <h2 className="w-full text-2xl font-bold uppercase">Your Memories</h2>
+          <h2 className="w-full text-2xl font-rubik-doodle-shadow text-center font-bold uppercase">
+            Your Memories
+          </h2>
           {entries.length === 0 ? (
             <div>
               <h2 className="text-xl font-semibold text-slate-800">
@@ -26,7 +28,7 @@ export default async function Display() {
               </Link>
             </div>
           ) : (
-            <div className="max-h-[450px] overflow-y-auto pr-2">
+            <div className="max-h-[50vh] overflow-y-auto pr-2 [scrollbar=width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
               {entries.map((entry) => (
                 <div
                   key={entry.id}
