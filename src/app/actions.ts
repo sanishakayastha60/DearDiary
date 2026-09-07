@@ -12,7 +12,7 @@ async function getCurrentUser() {
 async function requireCurrentUser() {
   const user = await getCurrentUser();
   if (!user?.id) {
-    redirect("/");
+    redirect("/auth/login");
   }
   return user.id;
 }
