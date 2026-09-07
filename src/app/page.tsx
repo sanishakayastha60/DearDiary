@@ -10,7 +10,8 @@ export default async function App() {
   }
   return (
     <main className="ml-[5vw]">
-      <Quote />
+      <h1>Login Page</h1>
+      {/* <Quote /> */}
     </main>
   );
 }
