@@ -14,16 +14,16 @@ async function requireCurrentUser() {
   if (!user?.id) {
     throw new Error("Unauthorized");
   }
-  return user;
+  return user.id;
 }
 
 export async function createEntry(formData: FormData) {
-  const user = await requireCurrentUser();
+  const userId = await requireCurrentUser();
   const entry = await prisma.diaryEntry.create({
     data: {
       title: formData.get("title") as string,
       content: formData.get("content") as string,
-      userId: user.id,
+      userId: userId,
     },
   });
   revalidatePath("/");
@@ -31,25 +31,25 @@ export async function createEntry(formData: FormData) {
 }
 
 export async function getEntries() {
-  const user = await requireCurrentUser();
+  const userId = await requireCurrentUser();
   return prisma.diaryEntry.findMany({
-    where: { userId: user.id },
+    where: { userId: userId },
     orderBy: { createdAt: "desc" },
   });
 }
 
 export async function getEntry(id: string) {
-  const user = await requireCurrentUser();
+  const userId = await requireCurrentUser();
   return prisma.diaryEntry.findFirst({
     where: {
       id,
-      userId: user.id,
+      userId: userId,
     },
   });
 }
 
 export async function getEntryByDate(date: string) {
-  const user = await requireCurrentUser();
+  const userId = await requireCurrentUser();
   const start = new Date(`${date}T00:00:00`);
   const end = new Date(start);
   end.setDate(end.getDate() + 1);
@@ -59,7 +59,7 @@ export async function getEntryByDate(date: string) {
         gte: start,
         lt: end,
       },
-      userId: user.id,
+      userId: userId,
     },
     orderBy: {
       createdAt: "desc",
@@ -68,9 +68,9 @@ export async function getEntryByDate(date: string) {
 }
 
 export async function updateEntry(id: string, formData: FormData) {
-  const user = await requireCurrentUser();
+  const userId = await requireCurrentUser();
   const entry = await prisma.diaryEntry.findFirst({
-    where: { id, userId: user.id },
+    where: { id, userId: userId },
   });
   if (!entry) {
     throw new Error("Diary entry not found");
@@ -89,11 +89,11 @@ export async function updateEntry(id: string, formData: FormData) {
 }
 
 export async function deleteEntry(id: string) {
-  const user = await requireCurrentUser();
+  const userId = await requireCurrentUser();
   const entry = await prisma.diaryEntry.findFirst({
     where: {
       id,
-      userId: user.id,
+      userId: userId,
     },
   });
   if (!entry) {
