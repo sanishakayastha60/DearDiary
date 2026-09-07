@@ -12,7 +12,7 @@ async function getCurrentUser() {
 async function requireCurrentUser() {
   const user = await getCurrentUser();
   if (!user?.id) {
-    throw new Error("Unauthorized");
+    redirect("/");
   }
   return user.id;
 }
