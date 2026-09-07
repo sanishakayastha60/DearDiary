@@ -32,7 +32,7 @@ export default async function EditEntryPage({
           <textarea
             id="content"
             name="content"
-            defaultValue={entry.content}
+            defaultValue={entry.content ?? ""}
             className="w-full mb-4 italic outline-none [field-sizing:content] "
           />
         </div>

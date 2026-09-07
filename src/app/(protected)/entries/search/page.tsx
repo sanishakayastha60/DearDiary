@@ -71,7 +71,7 @@ export default function SearchBar() {
                 {entry.title}
               </h2>
               <p className="text-sm font-handlee">
-                {entry.createdAt.split("T")[0]}
+                {entry.createdAt.toISOString().split("T")[0]}
               </p>
               <p className="whitespace-pre-wrap font-kalam break-words line-clamp-2">
                 {entry.content}

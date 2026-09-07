@@ -1,7 +1,7 @@
 type Entry = {
   id: string;
   title: string;
-  content: string;
+  content: string | null;
   createdAt: Date;
 };
 
