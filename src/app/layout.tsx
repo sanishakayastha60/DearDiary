@@ -10,6 +10,7 @@ import "./globals.css";
 import { url } from "inspector";
 import NavBar from "./components/NavBar";
 import Frame from "./components/Frame";
+import AudioBtn from "./components/AudioBtn";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -56,6 +57,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           backgroundImage: "url('/bg_unsplash_scott.jpg')",
         }}
       >
+        <AudioBtn />
         <Frame>
           <NavBar />
           {children}
